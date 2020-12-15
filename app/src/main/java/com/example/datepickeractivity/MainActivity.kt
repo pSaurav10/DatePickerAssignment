@@ -1,21 +1,19 @@
 package com.example.datepickeractivity
 
 import android.app.DatePickerDialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
-import org.w3c.dom.Text
+import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var btnCalendar: Button
-    private lateinit var btnDob: Button
-    private lateinit var btnOutput: Button
-    private lateinit var tvWorkyear: TextView
-    private lateinit var tvAge: TextView
+    private lateinit var btnCalendar:Button
+    private lateinit var btnDob : Button
+    private lateinit var btnOutput : Button
+    private lateinit var tvWorkyear : TextView
+    private lateinit var tvAge : TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,82 +22,55 @@ class MainActivity : AppCompatActivity() {
 
         btnCalendar = findViewById(R.id.btnCalendar)
         btnDob = findViewById(R.id.btnDob)
-        btnOutput = findViewById(R.id.btnOutput)
-        tvWorkyear = findViewById(R.id.tvWorkyear)
-        tvAge = findViewById(R.id.tvAge)
+        btnOutput=findViewById(R.id.btnOutput)
+        tvWorkyear=findViewById(R.id.tvWorkyear)
+        tvAge=findViewById(R.id.tvAge)
 
         btnCalendar.setOnClickListener{
-            workCalendar()
+            loadCalender()
         }
-
         btnDob.setOnClickListener{
-           dobCalendar()
-
-        }
-        val listdob = dobCalendar()
-        btnOutput.setOnClickListener{
-
-            outCalendar(listdob)
+            loaddob()
         }
 
     }
-    private fun workCalendar(){
+    private fun loadCalender(){
         val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
+        val year1 = c.get(Calendar.YEAR)
+        val month1 = c. get(Calendar.MONTH)
+        val day1 = c.get(Calendar.DATE)
 
-        val datePickerDialog = DatePickerDialog(
-            this,
-            DatePickerDialog.OnDateSetListener{ view, year, monthOfYear, dayOfMonth ->
-                btnCalendar.text = "Date of Join: $dayOfMonth/$monthOfYear/$year"
-            },
-            year,
-            month,
-            day
+        val datePickerDialog=DatePickerDialog(
+                this, DatePickerDialog.OnDateSetListener { view, year, month, day ->
+            btnCalendar.text = "$year/$month/$day"
+            tvWorkyear.text = " ${year1-year}-${month1-(month)}"
+
+        },
+                year1,
+                month1,
+                day1
+
         )
         datePickerDialog.show()
     }
-
-    private fun dobCalendar():List<Int>{
+    private fun loaddob(){
         val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
+        val year1 = c.get(Calendar.YEAR)
+        val month1 = c. get(Calendar.MONTH)
+        val day1 = c.get(Calendar.DATE)
 
-        val datePickerDialog = DatePickerDialog(
-            this,
-            DatePickerDialog.OnDateSetListener{view,year,monthOfYear, dayOfMonth ->
-                btnDob.text = "DOB: $dayOfMonth/$monthOfYear/$year"
-            },
-            year,
-            month,
-            day
+        val datePickerDialog=DatePickerDialog(
+                this, DatePickerDialog.OnDateSetListener { view, year, month, day ->
+            btnDob.setText("$year:$month:$day")
+            tvAge.setText("${year1-year}-${month1-(month)}")
+
+        },
+                year1,
+                month1,
+                day1
+
         )
         datePickerDialog.show()
-        val listdob = listOf<Int>(year, month, day)
-        return listdob
     }
-
-    private fun outCalendar(listdob: List<Int>){
-        val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
-        val listdob = listdob
-        val datePickerDialog = DatePickerDialog(
-            this,
-            DatePickerDialog.OnDateSetListener{view,year,monthOfYear, dayOfMonth ->
-                val age = year - listdob[0]
-                tvAge.text = "$age"
-            },
-            year,
-            month,
-            day
-        )
-        datePickerDialog.show()
-
-    }
-
 
 }

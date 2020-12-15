@@ -8,42 +8,44 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
+
     <Button
+        android:id="@+id/btnCalendar"
+        android:textSize="25sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter Date of Joining!"
-        android:textSize="20sp"
-        android:id="@+id/btnCalendar"/>
+        android:hint="Enter date of joining"/>
     <Button
+        android:id="@+id/btnDob"
+        android:textSize="25sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter Date of Birth"
-        android:textSize="20sp"
-        android:id="@+id/btnDob" />
+        android:hint="Enter Date of Birth"/>
     <Button
         android:id="@+id/btnOutput"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Output"
-        android:textSize="20sp"
-        android:layout_gravity="center"/>
+        android:text="Calculate"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="No. of Years worked"
-        android:textSize="30sp"
-        android:layout_weight="0.45" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-       android:id="@+id/tvWorkyear"
-        android:layout_weight="1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No. of Years worked"
+            android:textSize="30sp"
+            android:layout_weight="0.45" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:id="@+id/tvWorkyear"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
@@ -66,5 +68,6 @@
             android:layout_weight="1"/>
 
     </LinearLayout>
+
 
 </LinearLayout>
